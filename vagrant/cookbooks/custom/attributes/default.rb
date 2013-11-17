@@ -1,0 +1,12 @@
+default[:custom][:compass_version]   = "0.12.2"
+default[:custom][:bluepill_version]  = "0.0.60"
+default[:custom][:foreman_version]   = "0.26.1"
+default[:custom][:mysql][:databases] = []
+default[:custom][:mysql][:users]     = []
+default[:custom][:inits]             = []
+default[:custom][:commands]          = []
+default[:custom][:crons]             = []
+default[:custom][:bashrc][:user]     = "vagrant"
+default[:custom][:bashrc][:paths]    = []
+default[:custom][:bashrc][:envs]     = {}
+default[:custom][:etc_hosts]         = []

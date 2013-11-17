@@ -1,0 +1,101 @@
+{
+	"name": "app-telegraph-v1-dev",
+	"description": "Role for sample telegraph v1 app (dev).",
+	"chef_type": "role",
+	"json_class": "Chef::Role",
+	"default_attributes": {},
+	"override_attributes": {
+		"apache": {
+			"user": "vagrant",
+			"group": "vagrant"
+		},
+		"mysql": {
+			"server_root_password": "root"
+		},
+		"xdebug": {
+			"remote_host": "192.168.33.1"
+		},
+		"kixeye": {
+			"bashrc": {
+				"envs": {
+					"APP_ENV": "development",
+					"APP_PLATFORM": "vagrant-vm"
+				},
+				"paths": [
+					"/home/vagrant/bin",
+					"/home/vagrant/app/bin"
+				]
+			},
+			"web_apps": [{
+					"server_name": "localhost",
+					"server_aliases": ["*.localhost"],
+					"docroot": "/home/vagrant/app/www",
+					"app_environment": "development",
+					"app_platform": "vagrant-vm",
+					"enable_ssl": true,
+					"aliases": [
+						{
+							"uri": "/xhprof",
+							"file_path": "/usr/share/php/xhprof_html/"
+						},
+						{
+							"uri": "/swagger",
+							"file_path": "/home/vagrant/app/swagger-ui/dist/"
+						}
+					]
+			}, {
+					"server_name": "dev.vm",
+					"server_aliases": ["*.dev.vm"],
+					"docroot": "/home/vagrant/app/www",
+					"app_environment": "development",
+					"app_platform": "vagrant-vm-tests",
+					"enable_ssl": true,
+					"aliases": [
+						{
+							"uri": "/swagger",
+							"file_path": "/home/vagrant/app/swagger-ui/dist/"
+						}
+					]
+			}],
+			"mysql": {
+				"databases": ["securities_master"],
+				"users": [{
+					"username": "'vagrant'@'%'",
+					"password": ""
+				}]
+			},
+			"crons": [{
+				"name": "touch",
+				"command": "touch /home/vagrant/cron-touched",
+				"user": "vagrant"
+			}],
+			"etc_hosts": [{
+				"ip": "127.0.0.1",
+				"domain": "trading-dev"
+			}]
+		}
+	},
+	"run_list": [
+		"role[server-default]",
+		"role[server-build]",
+		"recipe[custom::php54ppa]",
+		"recipe[custom::svn17ppa]",
+		"role[server-php-web]",
+		"role[server-php-consumer]",
+		"role[server-mysql]",
+		"role[server-memcached]",
+		"role[server-rabbitmq]",
+
+		"recipe[custom::phpmyadmin]",
+		"recipe[custom::mysql_setup]",
+		"recipe[custom::bashrc]",
+		"recipe[custom::crons]",
+		"recipe[custom::etc_hosts]",
+		"recipe[webgrind]",
+		"recipe[python]",
+		
+		"recipe[custom::telegraph_scripts]",
+		"recipe[custom::commands]",
+		"recipe[custom::mq_workers]"
+	]
+}
