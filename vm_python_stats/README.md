@@ -9,7 +9,7 @@ stats_py_vm
 About
 -----
 
-This project provides a [Ubuntu (12.0)][2] [Vagrant][3] Virtual Machine (VM) with numerical and
+This project provides a [Ubuntu (14.04)][2] [Vagrant][3] Virtual Machine (VM) with numerical and
 scientific libraries for Python. It includes the following libraries.
 
 * [Numpy][4]
@@ -20,11 +20,12 @@ scientific libraries for Python. It includes the following libraries.
 * [Sympy][9]
 * [Pandas][10]
 * [Statsmodels][11]
+* [Scikit learn][12]
 
 
-There are [Puppet][12] scripts that automatically install the software when the VM is started.
+There are [Puppet][13] scripts that automatically install the software when the VM is started.
 
-[2]: http://releases.ubuntu.com/precise/
+[2]: http://releases.ubuntu.com/14.04/
 [3]: http://www.vagrantup.com/
 [4]: http://www.numpy.org/
 [5]: http://www.scipy.org/
@@ -34,7 +35,8 @@ There are [Puppet][12] scripts that automatically install the software when the 
 [9]: http://sympy.org/en/index.html
 [10]: http://pandas.pydata.org/
 [11]: http://statsmodels.sourceforge.net/
-[12]: http://puppetlabs.com/
+[12]: http://scikit-learn.org/stable/
+[13]: http://puppetlabs.com/
 
 Running
 -------
@@ -47,15 +49,7 @@ Running
 
 2. Connect to the VM
 
-    ```bat
-    REM on windows
-    vm\ssh_vagrant.bat
-    REM If Python is installed
-    python vm\ssh_vagrant.py
     ```
-
-    ```bash
-    # on unix
     vagrant ssh
     ```
 
@@ -76,16 +70,16 @@ Requirements
 
 The following software is needed to get the software from github and run
 Vagrant to set up the Python development environment. The Git environment
-also provides an [SSH  client][13] for Windows.
+also provides an [SSH  client][14] for Windows.
 
-* [Oracle VM VirtualBox][14]
-* [Vagrant][15]
-* [Git][16]
+* [Oracle VM VirtualBox][15]
+* [Vagrant][16]
+* [Git][17]
 
-[13]: http://en.wikipedia.org/wiki/Secure_Shell
-[14]: https://www.virtualbox.org/
-[15]: http://vagrantup.com/
-[16]: http://git-scm.com/
+[14]: http://en.wikipedia.org/wiki/Secure_Shell
+[15]: https://www.virtualbox.org/
+[16]: http://vagrantup.com/
+[17]: http://git-scm.com/
 
 Credits
 -------
