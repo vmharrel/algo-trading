@@ -1,0 +1,76 @@
+pybg -- fixed income python libraries
+=====================================
+
+pybg is a set of wrappers and extensions to QuantLib.  It is inspired by,
+and borrows freely from Enthought's PyQL Cython wrappers for QuantLib.
+
+The purpose of this libraries is to:
+
+1. Provide a interface to QuantLib's fixed-income capabilities that is easily 
+used in a Python front end.
+
+2. Minimize the extent of new data types needed to communicate with the library. 
+For example, python datetime objects are used instead of QuantLib Dates.
+
+
+Build Info
+__________
+
+For Mac OSX:
+
+    make build_ext
+    make test
+
+on Windows:
+
+    make build_win
+    make test
+
+then install:
+
+    make install
+
+
+REQUIREMENTS & ENVIRONMENT
+__________________________
+
+Set environment variables:
+
+BG_LIBRARY_DIRS
+BG_INCLUDE_DIRS
+
+Assumes QuantLib is compiled and available in /usr/local/lib or directory path specified in BG_LIBRARY_DIRS
+
+see requirements.txt
+
+Under Mac OSX10.6, set the following environment variables:
+
+Add to virtualenv activate script:
+
+    export CFLAGS="-m32 -arch i386"
+    export CPPFLAGS="-m32 -arch i386"
+    export CXXFLAGS="-m32 -arch i386"
+    export ARCHFLAGS="-arch i386"
+    export MACOSX_DEPLOYMENT_TARGET=10.6
+    export LDFLAGS="-arch i386 -L/usr/local/lib"
+
+and in deactivate:
+
+    unset CFLAGS
+    unset CPPFLAGS
+    unset CXXFLAGS
+    unset ARCHFLAGS
+    unset MACOSX_DEPLOYMENT_TARGET
+    unset LDFLAGS
+
+
+License Info:
+    QuantLib: http://quantlib.org/reference/license.html
+    pyql:   https://github.com/enthought/pyql/blob/master/LICENSE.txt
+    pybg:   MIT License, Copyright (c) 2012 BG Research LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
